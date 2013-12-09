@@ -1,0 +1,36 @@
+@CHARSET "utf-8";
+
+ul{
+   list-style:none;
+}
+
+label.logtit{
+	font-weight:bold;
+	width:120px;
+	float:left;
+}
+fieldset.loginfld{
+	margin-top:200px;
+	width: 320px;
+    align=center;
+    margin-left:500px;
+    no-repeat right bottom;
+}
+div.login{
+	align=center;
+}
+.centered{
+	text-align:center;
+	margin-top:10px;
+}
+fieldset legend{
+	font-weight:bold;
+	font-size:18px;
+	color:blue;
+	width-size:300px;
+	
+} 
+
+ul li{
+	margin-bottom:10px;
+}

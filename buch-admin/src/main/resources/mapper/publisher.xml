@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SqlPublisherMapper">
+	
+	<resultMap id="publisherResultMap" type="publisherVo">
+	        <id property="pubCd"                  column="PUB_CD" />
+	        <result property="pubGb"              column="PUB_GB" />
+	        <result property="pubNm"              column="PUB_NM" />
+	        <result property="busiNo"             column="BUSI_NO" />
+	        <result property="busiPresident"      column="BUSI_PRESIDENT" />
+	        
+	        <result property="busiTel"            column="BUSI_TEL" />	        
+	        <result property="busiFax"            column="BUSI_FAX" />
+	        <result property="busiZip"            column="BUSI_ZIP" />
+	        <result property="busiAddr1"          column="BUSI_ADDR1" />
+	        <result property="busiAddr2"          column="BUSI_ADDR2" />
+	        
+	        <result property="busiIndustry"       column="BUSI_INDUSTRY" />	        
+	        <result property="busiItem"           column="BUSI_ITEM" />
+	        <result property="taxGb"              column="TAX_GB" />
+	        <result property="billType"           column="BILL_TYPE" />
+	        <result property="dealType"           column="DEAL_TYPE" />
+	        
+	        <result property="closeDt"            column="CLOSE_DT" />	        
+	        <result property="busiDelivery"       column="BUSI_DELIVERY" />
+	        <result property="busiEmail"          column="BUSI_EMAIL" />
+	        <result property="sttlementDt"        column="SETTLEMENT_DT" />
+	        
+	        
+	        <result property="useYn"              column="USE_YN" />
+	        <result property="regId"              column="REG_ID" />	        
+	        <result property="regDt"              column="REG_DT" />
+	        <result property="modId"              column="MOD_ID" />
+	        <result property="modDt"              column="MOD_DT" />
+
+	 </resultMap> 
+
+		
+	<select id="publisherCount"  parameterType="java.util.HashMap" resultType="int">
+		SELECT
+			 COUNT(1) CNT 
+		  FROM GOODS_MT
+	</select>
+	
+	
+
+	
+	
+	<select id="publisherList" parameterType="java.util.HashMap" resultMap="publisherResultMap">
+            SELECT 
+                  * 
+            FROM PUBLISHER_TB
+             
+            LIMIT ${param1} OFFSET ${param2}
+		   
+	</select>
+	
+		
+
+</mapper>
