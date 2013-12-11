@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jqgrid.mybatis.EmployeesMapper">
+	<select id="getTotalRecord" parameterType="map" resultType="int">
+		select count(employee_id) total from employees
+		<where>
+			<if test="condition != null">
+			${condition}
+			</if>
+		</where>
+	</select>
+	<select id="selectEmployees" parameterType="map" resultType="Employee">
+		select t2.employee_id,
+		       t2.first_name,
+		       t2.last_name,
+		       t2.email,
+		       t2.phone_number,
+		       t2.hire_date,
+		       t2.job_id,
+		       t2.salary,
+		       t2.commission_pct,
+		       t2.manager_id,
+		       t2.department_id
+		from (select rownum no, t1.*
+			  from (select employee_id,
+		       		 	   first_name,
+		       		 	   last_name,
+		       		 	   email,
+		       		 	   phone_number,
+		       		 	   hire_date,
+		       		 	   job_id,
+		       		 	   salary,
+		       		 	   commission_pct,
+		       		 	   manager_id,
+		       		 	   department_id
+		 	  		from employees
+		 			<where>
+		 				<if test="condition != null">
+		 					${condition}
+		 				</if>
+		 			</where>
+		 			order by ${sidx} ${sord}) t1
+		 	   where rownum &lt;= #{stop}) t2
+		 where t2.no &gt;= #{start}
+	</select>
+</mapper>
